@@ -1,0 +1,78 @@
+import axios from 'axios'
+import qs from 'qs'
+import {message } from 'antd';
+import { Link } from 'dva/router';
+//开发环境
+//axios.defaults.baseURL = 'http://192.168.1.11:2002';//萌萌
+//axios.defaults.baseURL = 'http://192.168.1.116:2002';//琼瑶
+//测试环境
+//axios.defaults.baseURL = 'http://192.168.1.19:2002'; http://116.62.146.99:2002
+axios.defaults.baseURL = 'http://116.62.146.99:2002';
+// axios.defaults.baseURL = 'http://192.168.1.134:2002';
+// 拦截请求
+axios.interceptors.request.use(
+  // Toast.loading('加载中', 0);
+    config => {
+        let authToken = window.sessionStorage.getItem('token');
+        if (authToken) {
+            config.headers.token = authToken;
+        }
+
+		      
+		        
+		        
+		    
+
+                
+
+        return config
+    },
+    err => {
+        return Promise.reject(err)
+    }
+);
+
+// 拦截相应
+axios.interceptors.response.use(
+  response => {
+  	if(response.data.code == 111){
+      message.error('未登录',3);
+      window.location.href='/';
+  	}else{
+  			return response;
+  	}
+  },
+  err => {
+      message.error('加载超时',3)
+      return err
+    }
+);
+
+export default class Http {
+  static get(url, params) {
+    return new Promise((resolve, reject) => {
+      axios.get(url, {
+        params: params
+      }).then(res => {
+        resolve(res)
+      }).catch(err => {
+        reject(err)
+      })
+    })
+  }
+
+  static post(url, params) {
+    return new Promise((resolve, reject) => {
+      axios.post(url+'?= '+new Date().getTime()+'', qs.stringify(params), {
+          headers: {
+            'Content-Type': 'application/x-www-form-urlencoded',
+          }
+        }
+      ).then(res => {
+        resolve(res)
+      }).catch(err => {
+        reject(err)
+      })
+    })
+  }
+}

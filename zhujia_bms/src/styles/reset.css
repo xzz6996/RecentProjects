@@ -1,0 +1,40 @@
+body,html{height: 100%;}
+.fl{float:left;} 
+.fr{float:right;}
+.clearfix:after{content:"\0020";display:block;height:0;clear:both;visibility:hidden;}
+.clearfix{zoom:1;}
+.mt10{margin-top: 10px;}
+.mt20{margin-top: 20px;}
+.ml10{margin-left: 10px;}
+.ml20{margin-left: 20px;}
+.lh40{line-height: 40px;}
+body{
+  background-color: #f6f6f6
+}
+*{
+  box-sizing: border-box
+}
+.pointClick{
+  cursor: pointer;
+}
+.main_content{
+  color: #4a4a4a;
+  width: 1100px;
+  float: right;
+  background-color: #fff;
+  padding: 20px;
+}
+.main_content .title{
+  font-size: 16px;
+  line-height: 40px;
+}
+.main_content .el-input{
+  width: 180px;
+}
+.main_content .el-table{
+  margin-top: 20px;
+  border: 1px solid #e0e0e0
+}
+.main_content .red{
+  color: red
+}
