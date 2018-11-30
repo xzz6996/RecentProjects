@@ -3,12 +3,12 @@ import qs from 'qs'
 import {message } from 'antd';
 import { Link } from 'dva/router';
 //开发环境
-//axios.defaults.baseURL = 'http://192.168.1.11:2002';//萌萌
-//axios.defaults.baseURL = 'http://192.168.1.116:2002';//琼瑶
+//axios.defaults.baseURL = '';
+//axios.defaults.baseURL = '';//
 //测试环境
-//axios.defaults.baseURL = 'http://192.168.1.19:2002'; http://116.62.146.99:2002
-axios.defaults.baseURL = 'http://116.62.146.99:2002';
-// axios.defaults.baseURL = 'http://192.168.1.134:2002';
+//axios.defaults.baseURL = '';
+axios.defaults.baseURL = '';
+// axios.defaults.baseURL = '';
 // 拦截请求
 axios.interceptors.request.use(
   // Toast.loading('加载中', 0);
